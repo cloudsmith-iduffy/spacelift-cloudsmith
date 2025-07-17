@@ -7,7 +7,14 @@ terraform {
   }
 }
 
-provider "cloudsmith" {}
+variable "api_key" {
+  type      = string
+  sensitive = true
+}
+
+provider "cloudsmith" {
+  api_key  = var.api_key
+}
 
 # Data source to get organization information
 data "cloudsmith_organization" "my_organization" {
